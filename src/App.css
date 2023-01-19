@@ -10,7 +10,7 @@
 
 .locationContainer {
   display: flex;
-  padding-top: 20px;
+  padding-top: 5%;
   padding-bottom: 20px;
   flex-wrap: wrap;
   row-gap: 10px;
@@ -51,6 +51,12 @@
 .borderLine {
   border-bottom: solid;
 }
+.buttonMargin {
+  margin-right: 8px;
+}
+.buttonContainer {
+  padding: 0 0 5%;
+}
 
 @keyframes hideError {
   from {
@@ -71,10 +77,7 @@ input {
 }
 
 .Weather-header {
-  font-size: 20px;
-  padding: 20px;
-}
-
-.buttonMargin {
-  margin-right: 8px;
+  border-top: solid;
+  padding-top: 12px;
+  font-size: 18px;
 }

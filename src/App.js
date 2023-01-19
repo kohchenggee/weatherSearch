@@ -104,9 +104,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="Weather-header borderLine">
-        <h2>Today's Weather</h2>
-      </header>
+      
       <div className="locationContainer">
         <div>
           City:{" "}
@@ -130,7 +128,7 @@ function App() {
           />
         </div>
       </div>
-      <div>
+      <div className="buttonContainer">
         <button
           onClick={() => weatherSearch()}
           disabled={cityValue === "" && countryValue === ""}
@@ -149,6 +147,9 @@ function App() {
       </div>
 
       {errorMsg && <div className="errorContainer">{errorMsg}</div>}
+      <header className="Weather-header">
+        <h2>Today's Weather</h2>
+      </header>
       {isLoading ? (
         <LoadingSpinner />
       ) : (
