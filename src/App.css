@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 0 2rem;
 }
 
 .App-logo {
@@ -7,32 +8,79 @@
   pointer-events: none;
 }
 
+.locationContainer {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  justify-content: center;
+}
+
+.searchItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+}
+
+.searchItemRightSection {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.searchItem:hover {
+  background-color: beige;
+}
+
+.searchItem + .searchItem {
+  border-top: solid 1px gainsboro;
+}
+
+.errorContainer {
+  background-color: #ffcccb;
+  border: solid 1px red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  animation: hideError 5s normal forwards ease-in-out;
+  animation-name: hideError;
+}
+
+.borderLine{
+  border-bottom: solid;
+}
+
+@keyframes hideError {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.imageButton {
+  cursor: pointer;
+}
+
+input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.Weather-header {
+  font-size: 20px;
+  padding: 20px;
+}
+
+.buttonMargin {
+  margin-right: 8px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }

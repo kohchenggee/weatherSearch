@@ -1,0 +1,30 @@
+.weatherContainer{
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    border-radius: 12px;
+    background-color: #a5e9ff;
+    justify-content: center;
+    gap: 10px;
+}
+
+.weatherLabel{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.smallLabel{
+    font-size: 12px;
+}
+.locationImage{
+    width: 200px;
+}
+@media only screen and (max-width:600px){
+    .weatherContainer{
+        flex-direction: column; 
+        min-width: 200px;
+    }
+    
+}
