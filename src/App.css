@@ -48,7 +48,7 @@
   animation-name: hideError;
 }
 
-.borderLine{
+.borderLine {
   border-bottom: solid;
 }
 
@@ -77,10 +77,4 @@ input {
 
 .buttonMargin {
   margin-right: 8px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }

@@ -1,9 +1,9 @@
-import search from "./assets/search.svg";
-import deleteIcon from "./assets/delete.svg";
+
 import LoadingSpinner from "./LoadingSpinner";
 import { useState, useEffect } from "react";
 import Weather from "./Weather";
 import "./App.css";
+import SearchHistory from "./SearchHistory";
 
 function App() {
   const appId = "7c06dab21118ad5fa9b7626b404c150b";
@@ -38,7 +38,10 @@ function App() {
         }
         return res.json();
       })
-      .catch((err) => console.log("error", err));
+      .catch((err) => {
+        setErrorMsg("Data Retrieve Fail, Please try again later");
+        console.log("error", err);
+      });
     if (response?.length >= 1) {
       const { lat, lon } = response?.[0];
       const urls = [
@@ -85,40 +88,6 @@ function App() {
           setWeatherData(null);
           setErrorMsg("Data Retrieve Fail, Please try again later");
         });
-      // const weatherResponse = await fetch(
-      //   `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7c06dab21118ad5fa9b7626b404c150b`
-      // )
-      //   .then((res) => {
-      //     if (res.status !== 200) {
-      //       throw new Error("Weather Api Error");
-      //     }
-      //     return res.json();
-      //   })
-      //   .catch((err) => console.log("error", err));
-      // const imageResponse = await fetch(
-      //   `https://api.pexels.com/v1/search?query=${
-      //     locationMsg
-      //   }&per_page=1&size=small&per_page=1&orientation=portrait`,
-      //   {
-      //     headers: {
-      //       Authorization:
-      //         "n74gE8TYfoOjSg7nqb8oXWaEbCnIEzTjKhwh77OtRodjKlJLyLRicvD7",
-      //     },
-      //   }
-      // );
-      // console.log("imageResponse", imageResponse);
-      // setWeatherData([response[0], weatherResponse]);
-      // const storageData =
-      //   JSON.parse(localStorage.getItem("weatherHistory")) || [];
-      // const newData = {
-      //   name: response[0]?.name,
-      //   country: response[0]?.country,
-      //   time: new Date().toLocaleString(),
-      //   locationString,
-      // };
-      // storageData.unshift(newData);
-      // localStorage.setItem("weatherHistory", JSON.stringify(storageData));
-      // setSearchHistory(storageData);
     } else {
       setWeatherData(null);
       setErrorMsg("Invalid Location");
@@ -131,36 +100,6 @@ function App() {
     array.shift(index);
     localStorage.setItem("weatherHistory", JSON.stringify(array));
     setSearchHistory([...array]);
-  };
-
-  const renderSearchHistory = () => {
-    if (!searchHistory) return null;
-    return (
-      <div>
-        {searchHistory.map((item, index) => (
-          <div className="searchItem" key={`SearchItem_${index}`}>
-            <div>
-              {index + 1}. {item.name}, {item.country}
-            </div>
-            <div className="searchItemRightSection">
-              <div>{item?.time}</div>
-              <img
-                src={search}
-                className="imageButton"
-                onClick={() => weatherSearch(item.locationString)}
-                alt="searchButton"
-              />
-              <img
-                src={deleteIcon}
-                className="imageButton"
-                onClick={() => removeHistory(index)}
-                alt="deleteButton"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    );
   };
 
   return (
@@ -191,7 +130,7 @@ function App() {
           />
         </div>
       </div>
-      <div >
+      <div>
         <button
           onClick={() => weatherSearch()}
           disabled={cityValue === "" && countryValue === ""}
@@ -219,7 +158,7 @@ function App() {
       <div className="borderLine">
         <h3>Search History</h3>
       </div>
-      {renderSearchHistory()}
+      <SearchHistory searchHistory={searchHistory} weatherSearch={weatherSearch} removeHistory={removeHistory} />
     </div>
   );
 }

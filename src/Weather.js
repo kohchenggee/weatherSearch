@@ -9,8 +9,10 @@ const Weather = ({ data, image }) => {
   const date = new Date(dt * 1000);
   return (
     <div className="weatherContainer">
-      <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt='weather_image' />
-      
+      <img
+        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+        alt="weather_image"
+      />
       <div>
         <div>
           <div className="weatherLabel">{mainWeather}</div>
@@ -26,7 +28,9 @@ const Weather = ({ data, image }) => {
           <div className="smallLabel">Time: {date.toLocaleString()}</div>
         </div>
       </div>
-      {image && <img src={image} alt='location_image' className="locationImage"/>}
+      {image && (
+        <img src={image} alt="location_image" className="locationImage" />
+      )}
     </div>
   );
 };
